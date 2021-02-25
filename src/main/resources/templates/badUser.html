@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>Success registration</title>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index,follow">
+    <link rel="icon" href="/static/imgs/logo.ico" th:href="@{/imgs/logo.ico}">
+    <link rel="stylesheet" href="/static/styles/style.css" th:href="@{/styles/style.css}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+    <div class="nav-container">
+        <nav class="registration-nav">
+            <div class="box-img">
+                <!--
+                <img id="nav-img" src="/Users/alexey/IdeaProjects/receipt-sharing/src/main/resources/static/imgs/connection_internet_network_send_share_sharing_social_icon_123194.ico"/>
+                -->
+            </div>
+            <ul>
+                <li><a class="signin" href="#">Home</a></li>
+                <li><a class="login" href="#">Login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <section class="background-section">
+        <div class="showcase">
+            <h2>Something went wrong.</h2>
+            <h3 th:text="${param.message[0]}">Error Message</h3>
+            <button th:if="${param.expired}" onclick="resendToken()">Resend link</button>
+
+        </div>
+    </section>
+
+    <script type="text/javascript" th:inline="javascript">
+        /*<![CDATA[*/
+        var serverContext = /*[[@{/}]]*/ "http://localhost:8080/";
+        var token = /*[[${param.token}]]*/ "token";
+        /*]]>*/
+        function resendToken() {
+            $.get(
+                serverContext + "user/resendRegistrationToken?token=" + token,
+                function (data) {
+                    window.location.href =
+                        serverContext + "login.html?message=" + data.message;
+                }
+            ).fail(
+                function (data) {
+                        window.location.href = 
+                         serverContext + "login?message=" +
+                        data.responseJSON.message;
+                }
+
+            )
+        }
+    </script>
+</body>
+
+</html>

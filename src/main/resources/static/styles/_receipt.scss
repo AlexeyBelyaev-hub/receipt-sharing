@@ -1,0 +1,92 @@
+.item{
+    width: 40%;
+    display: inline-flex;
+    height: 100%;
+
+    
+}
+
+.price{
+    width: 15%;
+
+}
+
+.quantity{
+    width: 10%;
+  
+}
+
+.sum{
+    width: 15%
+}
+
+.countForPerson{
+    max-width: 3rem;
+    overflow: visible;
+}
+
+input[type="text"]{
+    font-size: smaller;
+}
+
+input[type="number"]{
+    font-size: smaller;
+}
+
+.count-group{
+    display:inline-block;
+    max-width: 20rem;
+}
+
+
+.list-group-title{
+    list-style: none;
+    display: inline-flex;
+}
+.item-title{
+    width: 40%;
+    display: inline-flex;
+    overflow: hidden;
+}
+
+.price-title{
+    width: 15%;
+    display: inline-flex;
+    overflow: hidden;
+}
+
+.quantity-title{
+    width: 10%;
+    display: inline-flex;
+    overflow: hidden;
+}
+
+.sum-title{
+    width: 15%;
+    display: inline-flex;
+    overflow: hidden;
+
+}
+
+.select-items-title{
+    width: 15%;
+    
+    display: inline-flex;
+    margin-top: 1rem;
+    float:right;
+    overflow: hidden;
+}
+
+.total-title{
+    width: 69%;
+    display: inline-flex;
+    overflow: hidden;
+    justify-content: flex-end;
+}
+
+li.finished{
+    background-color: rgb(228, 245, 227)
+}
+
+
+  

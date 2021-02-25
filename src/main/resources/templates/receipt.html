@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>Sign in receipt sharing</title>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index,follow">
+    <link rel="icon" href="/static/imgs/logo.ico" th:href="@{/imgs/logo.ico}">
+    <link rel="stylesheet" type="text/css" href="/static/styles/style.css" th:href="@{/styles/style.css}" />
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <section class="background-section">
+        <div class="showcase-reg">
+
+            <div class="container-fluid">
+                <div id="main" class="card card-body">
+                    <h2 class="title">2. Choose the person</h2>
+
+                    <div class="row">
+                        <div class="col">
+                            <div id="persons" class="btn-group btn-group-toggle w-100" data-toggle="buttons">
+                               <label class="btn btn-outline-primary active" style="font-size:large" class="btn btn-primary">
+                                    <input type="radio" name="Person 1" id="person1" autocomplete="off" checked> Person 1
+                                </label>
+                                <label class="btn btn-outline-secondary" style="font-size:large">
+                                    <input type="radio" name="Person 2" id="person2" autocomplete="off"> Person 2
+                                </label>
+                               <label class="btn btn-outline-success" style="font-size:large">
+                                    <input type="radio" name="Person 3" id="person3" autocomplete="off"> Person 3
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-2">
+                            <div class="btn-group w-100">
+                                <button class="btn btn-light  w-100 p-0 font-weight-bold" style="font-size: x-large;"
+                                    name="add-person" id="add-person" autocomplete="off">
+                                    + </button>
+                                <button class="btn btn-danger  w-100 p-0 font-weight-bold" style="font-size: x-large;"
+                                    name="delete-person" id="delete-person" autocomplete="off">
+                                    - </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h2 class="title">1. Check the receipt</h2>
+                    <ul id="items" class="list-group">
+                        <li class="list-group-item">
+                            <div class="item-title">
+                                <h3>Title</h3>
+                            </div>
+                            <div class="price-title">
+                                <h3>Price</h3>
+                            </div>
+                            <div class="quantity-title">
+                                <h3>Quantity</h3>
+                            </div>
+                            <div class="sum-title">
+                                <h3>Sum</h3>
+                            </div>
+                            <div class="select-items-title">
+                                <h3>3. Select items</h3>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <input type="text" class="item" placeholder="Item" /></input>
+                            <input type="number" class="price" placeholder="Price" /></input>
+                            <input type="number" class="quantity" placeholder="Quantity" /></input>
+                            <input type="number" class="sum" placeholder="Sum" /></input>
+             
+                            <div class="btn-group mt-2 float-right">
+                                <button class="btn btn-lg btn-dark btn minus">-</button>
+                                <button class="btn btn-lg btn-dark btn plus">+</button>
+                                <button class="btn btn-lg btn-danger btn delete">X</button>
+                            </div>
+                            
+                            <!--For design porpuses-->
+                           <!-- <input class="btn btn-lg font-weight-bold btn-outline-primary countForPerson" name="person1" />
+                            <input class="btn btn-lg font-weight-bold btn-outline-secondary countForPerson" name="person2"/>
+                            <input class="btn btn-lg font-weight-bold btn-outline-success countForPerson" name="person3"/>               
+                        -->
+                        </li>
+                        <li class="list-group-item">
+                            <input type="text" class="item" placeholder="Item" /></input>
+                            <input type="number" class="price" placeholder="Price" /></input>
+                            <input type="number" class="quantity" placeholder="Quantity" /></input>
+                            <input type="number" class="sum" placeholder="Sum" /></input>
+                            <div class="btn-group mt-2 float-right">
+                                <button class="btn btn-lg btn-dark btn minus">-</button>
+                                <button class="btn btn-lg btn-dark btn plus">+</button>
+                                <button class="btn btn-lg btn-danger btn delete">X</button>
+                            </div>
+                            <!--For design porpuses-->
+                           <!-- <input class="btn btn-lg font-weight-bold btn-outline-primary countForPerson" name="person1" />
+                            <input class="btn btn-lg font-weight-bold btn-outline-secondary countForPerson" name="person2"/>
+                            <input class="btn btn-lg font-weight-bold btn-outline-success countForPerson" name="person3"/>    
+                         -->
+                        </li>
+                        <li id="li-add-button" class="list-group-item">
+                            <button id="add-new-item" class="btn btn-light  w-100 p-1 font-weight-bold"
+                                style="font-size: x-large;">+</button>
+                        </li>
+
+                        <li class="list-group-item">
+                            <div class="total-title">
+                                <h3 class="mr-3">Total:</h3>
+                                <h3 id="total" text="100"></h3>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script src="/templates/receipt.js"></script>
+</body>
+
+</html>

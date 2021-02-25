@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index,follow">
+    <link rel="icon" href="/static/imgs/logo.ico" th:href="@{/imgs/logo.ico}">
+    <link rel="stylesheet" href="/static/styles/style.css" th:href="@{/styles/style.css}">
+
+</head>
+
+<body>
+
+    <div th:fragment="navi" class="nav-container">
+        <nav>
+            <div class="nav-home">
+                <a  href="/templates/index.html" th:href="@{/}">Home</a>
+            </div>
+            
+            <ul>
+                
+                <li><a class="login" href="/templates/login.html" th:href="@{/login}">Login</a></li>
+                <li><a class="signin" href="#" th:href="@{/user/registration}">Register</a></li>
+                <li>
+                    <select id="locales">
+                        <option value="en" th:text="#{lang.eng}" th:selected="${#locale.language=='en'}">eng</option>
+                        <option value="ru" th:text="#{lang.ru}" th:selected="${#locale.language=='ru'}">rus</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $("#locales").change(function () {
+                    var selectedOption = $('#locales').val();
+                    if (selectedOption != '') {
+                        window.location.replace
+                        (
+                        window.location.origin + window.location.pathname + '?lang=' + selectedOption
+                        );
+                    }
+                });
+            });
+        </script>
+
+    </div>
+</body>
+
+</html>

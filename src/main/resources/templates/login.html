@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>Login receipt sharing</title>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index,follow">
+    <link rel="icon" href="/static/imgs/logo.ico" th:href="@{/imgs/logo.ico}">
+    <link rel="stylesheet" href="/static/styles/style.css" th:href="@{/styles/style.css}">
+
+</head>
+
+<body>
+    <div th:insert="~{navigation :: navi}"></div>
+
+    <section class="background-section">
+        <div class="showcase-reg">
+
+            <form class="reg-form" method="post" action="/login" autocomplete="off">
+                <h1 th:text="#{label.form.loginTitle}">Login to Receipt sharing app.</h1>
+
+                <div>
+                    <h2 class="information" th:text="${param.message}">message</h2>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input id="username" name="username" required=true>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required=true>
+                </div>
+
+                <div class="form-group-checkbox">
+                    <input type="checkbox" id="remember-me" name="remember-me">
+                    <label for="remember-me">Remember me?</label>
+                </div>
+
+                <div class="form-group-invalid">
+                    <p th:text="${session[SPRING_SECURITY_LAST_EXCEPTION]}" th:if="${param.error!=null}">error
+                    </p>
+                    <!-- th:if="${#bools.isTrue(param.error)}">error -->
+                </div>
+                <input class="btn" type="submit" value="Submit" th:value="#{label.form.submit}" />
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>

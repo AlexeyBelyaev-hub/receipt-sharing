@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>Receipt sharing</title>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index,follow">
+    <link rel="icon" href="/static/imgs/logo.ico"
+          th:href="@{/imgs/logo.ico}">
+    <link rel="stylesheet" href="/static/styles/style.css"
+          th:href="@{/styles/style.css}">
+
+</head>
+
+<body>
+
+
+<div th:insert="~{navigation :: navi}"></div>
+
+<section class="background-section">
+    <div class="showcase">
+        <h2>Receipt sharing app.</h2>
+        <h3 th:text="#{label.form.slogan}">Share receipt with friends effortless</h3>
+        <form>
+            <button th:text="#{button.form.trybeta}">Try beta version</button>
+        </form>
+
+    </div>
+</section>
+</body>
+
+</html>

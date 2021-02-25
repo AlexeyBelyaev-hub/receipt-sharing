@@ -1,0 +1,107 @@
+
+
+.showcase-reg{
+        position: absolute;
+        background:white;
+        padding: 5rem 5rem;
+        margin-top: 5%;
+        min-width: min-content;
+        max-width: 90%;
+      
+        margin-bottom: 5%; 
+         
+}
+
+    .reg-form{
+        display: flex;
+        justify-content: space-around;
+        align-items:flex-start;
+        flex-direction: column;
+        min-height: 80%;
+        .form-group{
+            display: block;
+            left: 0%;
+            right: 0%;
+            width: 100%;
+            input{
+                left: 0%;
+                width: 100%;
+                height: 100%;
+                padding-top: 1rem;
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                outline-width: thin;
+                outline-color: lightgray;
+               
+            }
+
+        }
+
+        .form-group-invalid{
+            position: relative;    
+            left: 0%;
+            right: 0%;
+            width: 100%;
+            margin-top: 1rem;
+            input{
+                left: 0%;
+                width: 100%;
+                height: 100%;
+                padding-top: 1rem;
+                border-top: none;
+                border-left: none;
+                border-right: none;
+                border-color: red;
+                outline-width: thin;
+                outline-color: lightgray;
+            }
+            p{
+                color: red;
+            }
+        }
+
+        .information{
+            display: block;
+            margin-bottom: 1rem;
+            left: 0%;
+            right: 0%;
+            width: 100%;
+            color: orangered;
+            font-size: 2.5rem;
+        }
+
+        .btn{
+            align-self: center;
+            justify-self: center;
+            
+            font-size: 1.6rem;
+            background: none;
+            padding: 1rem;
+            margin-top: 3rem;
+        }
+    }
+    h1{
+        margin-bottom: 2rem;
+        margin-top: 0rem;
+    }
+
+    .form-group{
+        margin-bottom: 2rem;
+    }
+    
+    .form-group-checkbox{
+        display: inline-flex;
+        justify-content: center;
+        justify-items: center;
+        label{
+        }
+
+        input{
+            align-self:center;
+            margin-right: 2rem;
+        }
+        
+
+    
+    }

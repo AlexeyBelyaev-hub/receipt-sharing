@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>Success registration</title>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index,follow">
+    <link rel="icon" href="/static/imgs/logo.ico"
+          th:href="@{/imgs/logo.ico}">
+    <link rel="stylesheet" href="/static/styles/style.css"
+          th:href="@{/styles/style.css}">
+
+</head>
+
+<body>
+    <div th:insert="~{navigation :: navi}"></div>
+
+    <section class="background-section"> 
+        <div class="showcase">
+            <h2>Registration completed.</h2>
+            <h3>Verification reference has been sent to your email.
+                Please check email and follow the reference to activate account.</h3>
+        </div>
+        
+    </section>
+</body>
+
+</html>

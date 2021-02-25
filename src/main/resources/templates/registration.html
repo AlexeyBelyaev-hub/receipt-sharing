@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<title>Sign in receipt sharing</title>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index,follow">
+    <link rel="icon" href="/static/imgs/logo.ico"
+          th:href="@{/imgs/logo.ico}">
+    <link rel="stylesheet" type="text/css" href="/static/styles/style.css"
+    th:href="@{/styles/style.css}"/>
+
+</head>
+
+<body>
+    <div th:insert="~{navigation :: navi}"></div>
+    <section class="background-section">
+        <div class="showcase-reg">
+           
+            <form class="reg-form" th:object="${user}" autocomplete="off"
+                th:action="@{/user/registration}" method="post">
+                <h1 th:text="#{label.form.title}">Registration</h1>
+                <div class="form-group" th:class="${#fields.hasErrors('email')} ? 'form-group-invalid' : 'form-group'">
+                    <label for="username" th:text="#{label.user.username}">Username</label>
+                    <input id="username" th:field="*{username}" />
+                    <p th:each="error: ${#fields.errors('username')}" th:text="${error}">Validation error</p>
+                </div>
+                <div class="form-group" th:class="${#fields.hasErrors('email')} ? 'form-group-invalid' : 'form-group'">
+                    <label for="email" th:text="#{label.user.email}">Email</label>
+                    <input id="email" th:field="*{email}">
+                    <p th:each="error: ${#fields.errors('email')}" th:text="${error}">Validation error</p>
+                </div>
+                <div class="form-group" th:class="${#fields.hasErrors('password')} ? 'form-group-invalid' : 'form-group'">
+                    <label for="password" th:text="#{label.user.password}">Password</label>
+                    <input id="password" th:field="*{password}">
+                    <p th:each="error: ${#fields.errors('password')}" th:text="${error}">Validation error</p>
+                </div>
+                <div class="form-group" th:class="${#fields.hasErrors('confirmPassword')} ? 'form-group-invalid' : 'form-group'">
+                    <label for="confirmPassword" th:text="#{label.user.confirmPassword}">Confirm password</label>
+                    <input id="confirmPassword" th:field="*{confirmPassword}">
+                    <p th:each="error:${#fields.errors('confirmPassword')}"
+                        th:text="${error}">Validation error</p>
+                </div>
+                <div class="form-group-invalid">
+                    <p th:each="error:${#fields.errors}"
+                       th:text="${error}">Messages</p>
+                </div>
+
+                <input class="btn" type="submit" value="Submit" th:value="#{label.form.submit}" />
+            </form>
+        </div>
+    </section>
+</body>
+
+</html>
