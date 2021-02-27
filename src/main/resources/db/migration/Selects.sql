@@ -21,3 +21,7 @@ VALUES (uuid_generate_v4(),'Vasiliy',
         (SELECT email FROM app_user WHERE nick_name='Vasiliy'),
          '89857650900',
          (SELECT app_user_id FROM app_user WHERE nick_name='Vasiliy') );
+
+DELETE FROM token WHERE app_user_uuid=(SELECT app_user_id FROM app_user WHERE nick_name='Alexey');
+DELETE FROM app_user WHERE nick_name='Alexey';
+UPDATE app_user SET is_enabled=TRUE WHERE nick_name = 'Alexey';

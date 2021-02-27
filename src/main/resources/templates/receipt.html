@@ -6,26 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="index,follow">
     <link rel="icon" href="/static/imgs/logo.ico" th:href="@{/imgs/logo.ico}">
+   
     <link rel="stylesheet" type="text/css" href="/static/styles/style.css" th:href="@{/styles/style.css}" />
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 
 </head>
 
 <body>
+
+   <div th:insert="~{navigation :: navi}"></div>
 
     <section class="background-section">
         <div class="showcase-reg">
 
             <div class="container-fluid">
                 <div id="main" class="card card-body">
-                    <h2 class="title">2. Choose the person</h2>
+                    <h3 class="title">1. Choose the person</h3>
 
                     <div class="row">
                         <div class="col">
-                            <div id="persons" class="btn-group btn-group-toggle w-100" data-toggle="buttons">
-                               <label class="btn btn-outline-primary active" style="font-size:large" class="btn btn-primary">
+                            <div id="persons" class="btn-group btn-group-toggle w-100 flex-wrap" data-toggle="buttons">
+                               <label class="btn btn-outline-primary active" style="font-size:large">
                                     <input type="radio" name="Person 1" id="person1" autocomplete="off" checked> Person 1
                                 </label>
                                 <label class="btn btn-outline-secondary" style="font-size:large">
@@ -48,7 +51,7 @@
                         </div>
                     </div>
 
-                    <h2 class="title">1. Check the receipt</h2>
+                    <h3 class="title">2. Check the receipt and select items</h3>
                     <ul id="items" class="list-group">
                         <li class="list-group-item">
                             <div class="item-title">
@@ -62,9 +65,6 @@
                             </div>
                             <div class="sum-title">
                                 <h3>Sum</h3>
-                            </div>
-                            <div class="select-items-title">
-                                <h3>3. Select items</h3>
                             </div>
                         </li>
                         <li class="list-group-item">
@@ -130,7 +130,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <script src="/templates/receipt.js"></script>
+    <script src="/static/scripts/receipt.js" th:attr="src=@{/scripts/receipt.js}"></script>
 </body>
 
 </html>

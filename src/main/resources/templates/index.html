@@ -14,15 +14,14 @@
 
 <body>
 
-
 <div th:insert="~{navigation :: navi}"></div>
 
 <section class="background-section">
     <div class="showcase">
         <h2>Receipt sharing app.</h2>
         <h3 th:text="#{label.form.slogan}">Share receipt with friends effortless</h3>
-        <form>
-            <button th:text="#{button.form.trybeta}">Try beta version</button>
+        <form action="#" th:action="@{/receipt}" method="get">
+            <button type="submit" th:text="#{button.form.trybeta}" >Try beta version</button>
         </form>
 
     </div>

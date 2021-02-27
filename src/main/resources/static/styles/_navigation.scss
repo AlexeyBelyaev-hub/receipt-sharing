@@ -4,7 +4,7 @@
     position: relative;
 }
 
-nav{
+.nav-tag{
     width: 80%;
     margin: auto;
     padding: 0.2rem 0rem;
@@ -12,21 +12,24 @@ nav{
     display:flex;
     justify-content: space-between;
     align-items: center;
+    
 
     .nav-home{
-    
+        
         flex: 2;
-        a {
+        .home-link {
             font-size: 2.6rem;
+            color: white;
         }
     }
 
-    ul{
+    .nav-ul{
         display: flex;
         justify-content: space-between;
         flex: 1;
         list-style: none;
-        li{
+        margin-top: 1rem;
+        .nav-li{
             font-size: 2.6rem;
             
         }
@@ -38,9 +41,11 @@ nav{
        background: none;
         padding: 1rem 2rem;
         border-radius: 0rem;
+        color: white;
     }
     .signin{
         border: white;
+        color: white;
     }
 }
 

@@ -12,28 +12,29 @@
 
 <body>
 
-    <div th:fragment="navi" class="nav-container">
-        <nav>
-            <div class="nav-home">
-                <a  href="/templates/index.html" th:href="@{/}">Home</a>
-            </div>
-            
-            <ul>
-                
-                <li><a class="login" href="/templates/login.html" th:href="@{/login}">Login</a></li>
-                <li><a class="signin" href="#" th:href="@{/user/registration}">Register</a></li>
-                <li>
-                    <select id="locales">
-                        <option value="en" th:text="#{lang.eng}" th:selected="${#locale.language=='en'}">eng</option>
-                        <option value="ru" th:text="#{lang.ru}" th:selected="${#locale.language=='ru'}">rus</option>
-                    </select>
-                </li>
-            </ul>
-        </nav>
+<!-- NAVIGATION -->
+<div th:fragment="navi" class="nav-container">
+    <nav class="nav-tag">
+        <div class="nav-home">
+            <a class="home-link"  href="/templates/index.html" th:href="@{/}">Home</a>
+        </div>
+
+        <ul class="nav-ul">
+
+            <li class="nav-li"><a class="login" href="/templates/login.html" th:href="@{/login}">Login</a></li>
+            <li class="nav-li"><a class="signin" href="#" th:href="@{/user/registration}">Register</a></li>
+            <li>
+                <select id="locales">
+                    <option value="en" th:text="#{lang.eng}" th:selected="${#locale.language=='en'}">eng</option>
+                    <option value="ru" th:text="#{lang.ru}" th:selected="${#locale.language=='ru'}">rus</option>
+                </select>
+            </li>
+        </ul>
+    </nav>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script type="text/javascript">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
             $(document).ready(function () {
                 $("#locales").change(function () {
                     var selectedOption = $('#locales').val();
@@ -47,7 +48,10 @@
             });
         </script>
 
-    </div>
+</div>
+
+<!--END -->
+
 </body>
 
 </html>

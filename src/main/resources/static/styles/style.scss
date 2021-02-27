@@ -59,7 +59,7 @@ html{
    }
    
    .background-section{
-    background-image: url(/static/imgs/background-img.jpg);
+    background-image: url(/imgs/background-img.jpg);
     /*Make the section down the bottom of the page*/
     height: 100vh;
     background-size: cover;
@@ -69,7 +69,7 @@ html{
     justify-content: center;
     object-fit: cover;
     position: relative;
-    overflow-y: scroll;
+    
 }
 
 
@@ -84,7 +84,7 @@ html{
 @media screen and (max-width: 1300px){
 
   html{
-    font-size: 40%;
+    font-size: 50%;
   }
 }
 
@@ -95,11 +95,11 @@ html{
     font-size: 40%;
   }
 
-  nav{
+  .nav-tag{
     .nav-home{
       flex: 1;
     }
-    ul{
+    .nav-ul{
       flex: 3;
     }
   }

@@ -26,6 +26,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.thymeleaf.context.LazyContextVariable;
 
@@ -105,6 +106,8 @@ public class TemplateController {
         }catch (AppUserAlreadyExistException exception){
             bindingResult.addError(new ObjectError("UserExistError", exception.getMessage()));
             return "registration";
+        } catch ( RuntimeException ex) {
+            return "login?error="+ex.getMessage();
         }
         return "successRegistration";
     }
@@ -157,24 +160,25 @@ public class TemplateController {
     @GetMapping("/user/resendRegistrationToken")
     public GeneralResponse resendRegistrationToken(HttpServletRequest request, @RequestParam("token") String token) {
 
-        throw new MailAuthenticationException("mail exception");
-//        Optional<VerificationToken> newTokenOptional = applicationUserService.generateNewToken(token);
-//        VerificationToken newToken = newTokenOptional
-//                .orElseThrow(
-//                        ()->new AppUserUpdateException(
-//                                messages.getMessage("message.tokenNotUpdated", null, request.getLocale())
-//                ));
-//        // generate link;
-//        String appUrl =  "http://" + request.getServerName() +
-//                        ":" + request.getServerPort() +
-//                        request.getContextPath();
-//        SimpleMailMessage mailMessage = constructConfirmationEmail(appUrl, newToken, request.getLocale());
-//        mailSender.send(mailMessage);
-//        return new GeneralResponse(
-//                messages.getMessage("message.resentLink", mailMessage.getTo(), request.getLocale()),
-//                HttpStatus.OK,
-//                ZonedDateTime.now(ZoneId.of("Z"))
-//        );
+
+        Optional<VerificationToken> newTokenOptional = applicationUserService.generateNewToken(token);
+        VerificationToken newToken = newTokenOptional
+                .orElseThrow(
+                        ()->new AppUserUpdateException(
+                                messages.getMessage("message.tokenNotUpdated", null, request.getLocale())
+                ));
+        // generate link;
+        String appUrl =  "http://" + request.getServerName() +
+                        ":" + request.getServerPort() +
+                        request.getContextPath();
+        SimpleMailMessage mailMessage = constructConfirmationEmail(appUrl, newToken, request.getLocale());
+
+        mailSender.send(mailMessage);
+        return new GeneralResponse(
+                messages.getMessage("message.resentLink", mailMessage.getTo(), request.getLocale()),
+                HttpStatus.OK,
+                ZonedDateTime.now(ZoneId.of("Z"))
+        );
     }
 
     public SimpleMailMessage constructConfirmationEmail(String appUrl, VerificationToken token, Locale locale){
@@ -189,4 +193,10 @@ public class TemplateController {
 
     }
 
+
+    @GetMapping("receipt")
+    public String getReceiptView(HttpServletRequest request) {
+
+        return "receipt.html";
+    }
 }
