@@ -6,17 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="index,follow">
     <link rel="icon" href="/static/imgs/logo.ico" th:href="@{/imgs/logo.ico}">
-   
+
     <link rel="stylesheet" type="text/css" href="/static/styles/style.css" th:href="@{/styles/style.css}" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 
 </head>
 
 <body>
 
-   <div th:insert="~{navigation :: navi}"></div>
+    <div th:insert="~{navigation :: navi}"></div>
 
     <section class="background-section">
         <div class="showcase-reg">
@@ -26,27 +26,28 @@
                     <h3 class="title">1. Choose the person</h3>
 
                     <div class="row">
-                        <div class="col">
+                        <div class="col-sm">
                             <div id="persons" class="btn-group btn-group-toggle w-100 flex-wrap" data-toggle="buttons">
-                               <label class="btn btn-outline-primary active" style="font-size:large">
-                                    <input type="radio" name="Person 1" id="person1" autocomplete="off" checked> Person 1
+                                <label class="btn btn-outline-primary active" style="font-size:large">
+                                    <input type="radio" name="Person 1" id="person1" autocomplete="off" checked> Person
+                                    1
                                 </label>
                                 <label class="btn btn-outline-secondary" style="font-size:large">
                                     <input type="radio" name="Person 2" id="person2" autocomplete="off"> Person 2
                                 </label>
-                               <label class="btn btn-outline-success" style="font-size:large">
+                                <label class="btn btn-outline-success" style="font-size:large">
                                     <input type="radio" name="Person 3" id="person3" autocomplete="off"> Person 3
                                 </label>
                             </div>
                         </div>
-                        <div class="col-2">
+                        <div class="col-sm-2">
                             <div class="btn-group w-100">
-                                <button class="btn btn-light  w-100 p-0 font-weight-bold" style="font-size: x-large;"
-                                    name="add-person" id="add-person" autocomplete="off">
-                                    + </button>
-                                <button class="btn btn-danger  w-100 p-0 font-weight-bold" style="font-size: x-large;"
+                                <button class="btn btn-danger  w-100 p-0 font-weight-bold" style="font-size: large;"
                                     name="delete-person" id="delete-person" autocomplete="off">
                                     - </button>
+                                <button class="btn btn-dark  w-100 p-0 font-weight-bold" style="font-size: large;"
+                                    name="add-person" id="add-person" autocomplete="off">
+                                    + </button>
                             </div>
                         </div>
                     </div>
@@ -72,15 +73,15 @@
                             <input type="number" class="price" placeholder="Price" /></input>
                             <input type="number" class="quantity" placeholder="Quantity" /></input>
                             <input type="number" class="sum" placeholder="Sum" /></input>
-             
+
                             <div class="btn-group mt-2 float-right">
                                 <button class="btn btn-lg btn-dark btn minus">-</button>
                                 <button class="btn btn-lg btn-dark btn plus">+</button>
                                 <button class="btn btn-lg btn-danger btn delete">X</button>
                             </div>
-                            
+
                             <!--For design porpuses-->
-                           <!-- <input class="btn btn-lg font-weight-bold btn-outline-primary countForPerson" name="person1" />
+                            <!-- <input class="btn btn-lg font-weight-bold btn-outline-primary countForPerson" name="person1" />
                             <input class="btn btn-lg font-weight-bold btn-outline-secondary countForPerson" name="person2"/>
                             <input class="btn btn-lg font-weight-bold btn-outline-success countForPerson" name="person3"/>               
                         -->
@@ -96,7 +97,7 @@
                                 <button class="btn btn-lg btn-danger btn delete">X</button>
                             </div>
                             <!--For design porpuses-->
-                           <!-- <input class="btn btn-lg font-weight-bold btn-outline-primary countForPerson" name="person1" />
+                            <!-- <input class="btn btn-lg font-weight-bold btn-outline-primary countForPerson" name="person1" />
                             <input class="btn btn-lg font-weight-bold btn-outline-secondary countForPerson" name="person2"/>
                             <input class="btn btn-lg font-weight-bold btn-outline-success countForPerson" name="person3"/>    
                          -->

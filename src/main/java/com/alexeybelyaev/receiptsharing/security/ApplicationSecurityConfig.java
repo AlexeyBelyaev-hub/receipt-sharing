@@ -64,9 +64,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
        .clearAuthentication(true)
        .invalidateHttpSession(true)
        .deleteCookies("JSESSIONID","remember-me")
-       .logoutSuccessUrl("/login"); //2 weeks
-        // Here should be data base storage of remember me.
-        // .httpBasic();
+       .logoutSuccessUrl("/");
     }
 
 //    @Override

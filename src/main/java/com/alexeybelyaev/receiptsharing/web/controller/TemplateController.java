@@ -20,6 +20,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.mail.MailAuthenticationException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -65,6 +67,8 @@ public class TemplateController {
                                @RequestParam(value = "error", required = false) String error,
                                @RequestParam(value = "message", required = false) String message){
 
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        log.debug("AUTH", authentication.isAuthenticated());
         log.debug("LOGIN: error = {}",error);
         log.debug("LOGIN: message = {}",message);
         return "login";

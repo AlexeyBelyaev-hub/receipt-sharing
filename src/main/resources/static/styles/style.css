@@ -224,6 +224,8 @@ h1 {
 .nav-container {
   background: #060606;
   position: relative;
+  font-size: 62.5%;
+  color: white;
 }
 
 .nav-tag {
@@ -250,7 +252,6 @@ h1 {
 
 .nav-tag .nav-home .home-link {
   font-size: 2.6rem;
-  color: white;
 }
 
 .nav-tag .nav-ul {
@@ -264,11 +265,15 @@ h1 {
       -ms-flex: 1;
           flex: 1;
   list-style: none;
-  margin-top: 1rem;
 }
 
 .nav-tag .nav-ul .nav-li {
   font-size: 2.6rem;
+}
+
+.nav-tag .nav-ul .nav-li a {
+  color: white;
+  text-decoration: none;
 }
 
 .nav-tag .login {
@@ -286,10 +291,6 @@ h1 {
 
 .item {
   width: 40%;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  height: 100%;
 }
 
 .price {
