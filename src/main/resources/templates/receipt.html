@@ -68,6 +68,7 @@
                                 <h3>Sum</h3>
                             </div>
                         </li>
+                        <!--For design purposes
                         <li class="list-group-item">
                             <input type="text" class="item" placeholder="Item" /></input>
                             <input type="number" class="price" placeholder="Price" /></input>
@@ -80,11 +81,11 @@
                                 <button class="btn btn-lg btn-danger btn delete">X</button>
                             </div>
 
-                            <!--For design porpuses-->
-                            <!-- <input class="btn btn-lg font-weight-bold btn-outline-primary countForPerson" name="person1" />
+
+                            <input class="btn btn-lg font-weight-bold btn-outline-primary countForPerson" name="person1" />
                             <input class="btn btn-lg font-weight-bold btn-outline-secondary countForPerson" name="person2"/>
                             <input class="btn btn-lg font-weight-bold btn-outline-success countForPerson" name="person3"/>               
-                        -->
+
                         </li>
                         <li class="list-group-item">
                             <input type="text" class="item" placeholder="Item" /></input>
@@ -96,8 +97,8 @@
                                 <button class="btn btn-lg btn-dark btn plus">+</button>
                                 <button class="btn btn-lg btn-danger btn delete">X</button>
                             </div>
-                            <!--For design porpuses-->
-                            <!-- <input class="btn btn-lg font-weight-bold btn-outline-primary countForPerson" name="person1" />
+
+                            <input class="btn btn-lg font-weight-bold btn-outline-primary countForPerson" name="person1" />
                             <input class="btn btn-lg font-weight-bold btn-outline-secondary countForPerson" name="person2"/>
                             <input class="btn btn-lg font-weight-bold btn-outline-success countForPerson" name="person3"/>    
                          -->
@@ -131,7 +132,15 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-    <script src="/static/scripts/receipt.js" th:attr="src=@{/scripts/receipt.js}"></script>
+    <script type="text/javascript" th:inline="javascript">
+    /*<![CDATA[*/
+        var serverContext = /*[[@{/}]]*/ "http://localhost:8080/";
+        var receiptDto = /*[[${receipt}]]*/undefined;
+    /*]]>*/
+
+    </script>
+
+    <script src="/static/scripts/receipt.js" th:attr="src=@{/scripts/receipt.js}" type="text/javascript" th:inline="javascript"></script>
 </body>
 
 </html>

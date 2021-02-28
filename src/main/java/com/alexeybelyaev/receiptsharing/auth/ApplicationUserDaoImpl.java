@@ -36,7 +36,7 @@ public class ApplicationUserDaoImpl implements ApplicationUserDao {
 
     @Override
     public Optional<ApplicationUser> selectApplicationUserByUserName(String name) {
-        String sqlQuery = "SELECT * FROM app_user WHERE nick_name = :appUserName";
+        String sqlQuery = "SELECT * FROM app_user WHERE LOWER(nick_name) = LOWER(:appUserName)";
 
         MapSqlParameterSource params = new MapSqlParameterSource("appUserName",name);
         List<ApplicationUser> users = namedParamJdbcTemplate.query(sqlQuery,params,new ApplicationUserRowMapper());
@@ -46,7 +46,7 @@ public class ApplicationUserDaoImpl implements ApplicationUserDao {
 
     @Override
     public Optional<ApplicationUser> selectApplicationUserByEmail(String email) {
-        String sqlQuery = "SELECT * FROM app_user WHERE email = :email";
+        String sqlQuery = "SELECT * FROM app_user WHERE LOWER(email) = LOWER(:email)";
         MapSqlParameterSource params = new MapSqlParameterSource("email",email);
         List<ApplicationUser> users = namedParamJdbcTemplate.query(sqlQuery,params, new ApplicationUserRowMapper());
         Optional<ApplicationUser> user = Optional.ofNullable(users.isEmpty()?null:users.get(0));

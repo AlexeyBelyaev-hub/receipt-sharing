@@ -28,19 +28,18 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password" th:text="#{label.user.password}">Password</label>
                     <input type="password" id="password" name="password" required=true>
                 </div>
 
                 <div class="form-group-checkbox">
                     <input type="checkbox" id="remember-me" name="remember-me">
-                    <label for="remember-me">Remember me?</label>
+                    <label for="remember-me" th:text="#{label.user.rememberMe}">Remember me?</label>
                 </div>
 
                 <div class="form-group-invalid">
                     <p th:text="${session[SPRING_SECURITY_LAST_EXCEPTION]}" th:if="${param.error!=null}">error
                     </p>
-                    <!-- th:if="${#bools.isTrue(param.error)}">error -->
                 </div>
                 <input class="btn" type="submit" value="Submit" th:value="#{label.form.submit}" />
             </form>

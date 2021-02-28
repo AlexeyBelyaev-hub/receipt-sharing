@@ -7,6 +7,8 @@ import com.alexeybelyaev.receiptsharing.events.OnCompleteRegistrationEvent;
 import com.alexeybelyaev.receiptsharing.exceptions.AppUserAlreadyExistException;
 import com.alexeybelyaev.receiptsharing.exceptions.AppUserUpdateException;
 import com.alexeybelyaev.receiptsharing.exceptions.GeneralResponse;
+import com.alexeybelyaev.receiptsharing.model.Receipt;
+import com.alexeybelyaev.receiptsharing.service.ReceiptService;
 import com.alexeybelyaev.receiptsharing.validation.VerificationToken;
 import com.alexeybelyaev.receiptsharing.exceptions.AppUserNotFoundException;
 import com.alexeybelyaev.receiptsharing.web.dto.ApplicationUserDto;
@@ -14,6 +16,7 @@ import com.alexeybelyaev.receiptsharing.model.Person;
 import com.alexeybelyaev.receiptsharing.service.PersonService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.json.GsonJsonParser;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
@@ -46,6 +49,7 @@ public class TemplateController {
 
     private final PersonService personService;
     private final ApplicationUserService applicationUserService;
+    private final ReceiptService receiptService;
 
     @Autowired
     ApplicationEventPublisher eventPublisher;
@@ -57,9 +61,12 @@ public class TemplateController {
     JavaMailSender mailSender;
 
     @Autowired
-    public TemplateController(PersonService personService, ApplicationUserServiceImpl applicationUserService) {
+    public TemplateController(PersonService personService,
+                              ApplicationUserServiceImpl applicationUserService,
+                              ReceiptService receiptService) {
         this.personService = personService;
         this.applicationUserService = applicationUserService;
+        this.receiptService = receiptService;
     }
 
     @GetMapping("login")
@@ -67,10 +74,6 @@ public class TemplateController {
                                @RequestParam(value = "error", required = false) String error,
                                @RequestParam(value = "message", required = false) String message){
 
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        log.debug("AUTH", authentication.isAuthenticated());
-        log.debug("LOGIN: error = {}",error);
-        log.debug("LOGIN: message = {}",message);
         return "login";
     }
 
@@ -199,7 +202,17 @@ public class TemplateController {
 
 
     @GetMapping("receipt")
-    public String getReceiptView(HttpServletRequest request) {
+    public String getReceiptView(HttpServletRequest request, Model model,
+                                 @RequestParam(value = "trybeta", required = false) Boolean trybeta ) {
+
+        if (trybeta!=null && trybeta==true){
+            model.addAttribute("receipt", new LazyContextVariable<Receipt>() {
+                @Override
+                protected Receipt loadValue() {
+                    return receiptService.getTestReceipt();
+                }
+            });
+        }
 
         return "receipt.html";
     }

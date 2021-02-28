@@ -4,6 +4,7 @@
     position: relative;
     font-size: 62.5%;
     color: white;
+    
 }
 
 .nav-tag{
@@ -17,11 +18,14 @@
     
 
     .nav-home{
-        
+        list-style: none;
         flex: 2;
+        margin: 0;
         .home-link {
+            color: white;
             font-size: 2.6rem;
-           
+            font-family: 'Times New Roman', Times, serif;
+            padding: 1rem 2rem;
         }
     }
 
@@ -30,28 +34,40 @@
         justify-content: space-between;
         flex: 1;
         list-style: none;
+        margin: 0;
       
         .nav-li{
             font-size: 2.6rem;
             a{
                 color: white;
-                text-decoration: none;
-             }
-            
+                text-decoration: none;           
+             }     
         }
-
     } 
 
-    .login{
+    .login {
        /* background: #f54538;*/
        background: none;
         padding: 1rem 2rem;
         border-radius: 0rem;
         color: white;
+        font-size: 2.6rem;
+        font-family: 'Times New Roman', Times, serif;  
     }
     .signin{
-        border: white;
+        background: none;
+        padding: 1rem 2rem;
+        border-radius: 0rem;
         color: white;
+        font-size: 2.6rem;
+        font-family: 'Times New Roman', Times, serif;
+       
+    }
+
+    .locales{
+        margin-left: 1rem;
+        font-size: 2.6rem;
+        font-family: 'Times New Roman', Times, serif;
     }
 }
 

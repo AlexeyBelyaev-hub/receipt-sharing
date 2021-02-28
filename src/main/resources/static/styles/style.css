@@ -245,13 +245,18 @@ h1 {
 }
 
 .nav-tag .nav-home {
+  list-style: none;
   -webkit-box-flex: 2;
       -ms-flex: 2;
           flex: 2;
+  margin: 0;
 }
 
 .nav-tag .nav-home .home-link {
+  color: white;
   font-size: 2.6rem;
+  font-family: 'Times New Roman', Times, serif;
+  padding: 1rem 2rem;
 }
 
 .nav-tag .nav-ul {
@@ -265,6 +270,7 @@ h1 {
       -ms-flex: 1;
           flex: 1;
   list-style: none;
+  margin: 0;
 }
 
 .nav-tag .nav-ul .nav-li {
@@ -282,11 +288,23 @@ h1 {
   padding: 1rem 2rem;
   border-radius: 0rem;
   color: white;
+  font-size: 2.6rem;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .nav-tag .signin {
-  border: white;
+  background: none;
+  padding: 1rem 2rem;
+  border-radius: 0rem;
   color: white;
+  font-size: 2.6rem;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.nav-tag .locales {
+  margin-left: 1rem;
+  font-size: 2.6rem;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .item {

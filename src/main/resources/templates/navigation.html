@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,60 +8,58 @@
     <link rel="icon" href="/static/imgs/logo.ico" th:href="@{/imgs/logo.ico}">
     <link rel="stylesheet" href="/static/styles/style.css" th:href="@{/styles/style.css}">
 
-
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
-<div th:fragment="navi" class="nav-container">
-    <nav class="nav-tag">
-        <ul class="nav-home">
-           <li>
-               <a class="home-link"  href="/templates/index.html" th:href="@{/}">Home</a>
-           </li>
-        </ul>
+    <!-- NAVIGATION -->
+    <div th:fragment="navi" class="nav-container">
+        <nav class="nav-tag">
+            <ul class="nav-home">
+                <li class="nav-li">
+                    <a class="home-link" href="/templates/index.html" th:href="@{/}" th:text="#{link.home}">Home</a>
+                </li>
+            </ul>
 
-        <ul class="nav-ul">
-                <li  th:if="${#authentication.name}!='anonymousUser'"
-                     class="nav-li"><a class="login"  th:text="${#authentication.name}"></a></li>
-                <li  th:if="${#authentication.name}!='anonymousUser'"
-                     class="nav-li"><a class="signin" href="#" th:href="@{/logout}">Logout</a></li>
-
-
-                <li th:if="${#authentication.name}=='anonymousUser'"
-                    class="nav-li"><a class="login" href="/templates/login.html" th:href="@{/login}">Login</a></li>
-                <li th:if="${#authentication.name}=='anonymousUser'"
-                    class="nav-li"><a class="signin" href="#" th:href="@{/user/registration}">Register</a></li>
-
-            <li>
-                <select id="locales">
-                    <option value="en" th:text="#{lang.eng}" th:selected="${#locale.language=='en'}">eng</option>
-                    <option value="ru" th:text="#{lang.ru}" th:selected="${#locale.language=='ru'}">rus</option>
-                </select>
-            </li>
-        </ul>
-    </nav>
+            <ul class="nav-ul">
+                <li th:if="${#authentication.name}!='anonymousUser'" class="nav-li"><a class="login"
+                        th:text="${#authentication.name}"></a></li>
+                <li th:if="${#authentication.name}!='anonymousUser'" class="nav-li"><a class="signin" href="#"
+                        th:href="@{/logout}" th:text="#{link.logout}">Logout</a></li>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript">
+                <li th:if="${#authentication.name}=='anonymousUser'" class="nav-li"><a class="login"
+                        href="/templates/login.html" th:href="@{/login}" th:text="#{link.login}">Login</a></li>
+                <li th:if="${#authentication.name}=='anonymousUser'" class="nav-li"><a class="signin" href="#"
+                        th:href="@{/user/registration}" th:text="#{link.signin}">Register</a></li>
+
+                <li class="nav-li">
+                    <select id="locales" class="locales">
+                        <option value="en" th:text="#{lang.eng}" th:selected="${#locale.language=='en'}">eng</option>
+                        <option value="ru" th:text="#{lang.ru}" th:selected="${#locale.language=='ru'}">rus</option>
+                    </select>
+                </li>
+            </ul>
+        </nav>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript">
             $(document).ready(function () {
                 $("#locales").change(function () {
                     var selectedOption = $('#locales').val();
                     if (selectedOption != '') {
                         window.location.replace
-                        (
-                        window.location.origin + window.location.pathname + '?lang=' + selectedOption
-                        );
+                            (
+                                window.location.origin + window.location.pathname + '?lang=' + selectedOption
+                            );
                     }
                 });
             });
         </script>
 
-</div>
+    </div>
 
-<!--END -->
+    <!--END -->
 
 </body>
 

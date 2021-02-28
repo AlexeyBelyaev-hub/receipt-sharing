@@ -1,4 +1,18 @@
 // -- Initialize const and main items --
+
+
+$(document).ready(function(){
+
+    if(receiptDto!=undefined){
+        for(item of receiptDto.items){
+            addItem(null,item);
+        }
+    }
+    calculateTotal();
+    
+
+});
+
 const personStyles = new Map();
 //key: style, value: isUsed
 personStyles.set("btn btn-outline-primary", true);
@@ -72,7 +86,7 @@ function addPerson() {
     personLabel.textContent = "Person " + personId;
     var radioBtn = document.createElement('input');
     radioBtn.type = "radio";
-    radioBtn.name = "options";
+    radioBtn.name = "Person "+personId;
     radioBtn.id = "p-" + personId;
     radioBtn.autocomplete = "off";
     personLabel.appendChild(radioBtn);
@@ -94,7 +108,9 @@ function deletePerson() {
     //delete all counts for the person
     allCounts = document.querySelectorAll("input[name=" + personId + "]");
     for(count of allCounts){
+        var parentNode = count.parentNode;
         count.remove();
+        refreshRowForFinished(parentNode);
     }
     $(toggleLabel).button('toggle');
     
@@ -165,7 +181,8 @@ function sumOnChange() {
 }
 
 
-function addItem() {
+
+function addItem(event,itemDto) {
 
     var li = document.createElement('li');
     li.className = 'list-group-item';
@@ -201,6 +218,13 @@ function addItem() {
     li.appendChild(inputSum);
     li.appendChild(document.createTextNode(" "));
 
+    if(itemDto!=undefined){
+        inputItem.value=itemDto.title;
+        inputPrice.value = itemDto.price;
+        inputQuantity.value = itemDto.quantity;
+        inputSum.value = itemDto.sum;
+    }
+
     //Button group
     var divBtnGroup = document.createElement('div');
     divBtnGroup.className = "btn-group mt-2 float-right";
@@ -224,7 +248,10 @@ function addItem() {
     li.appendChild(divBtnGroup);
 
     itemList.insertBefore(li, liAddBtn);
+    return li;
 }
+
+
 
 function processItem(e) {
 
