@@ -58,7 +58,7 @@ spring.mail.properties.mail.smtp.startssl.enable=true
 
 spring.main.allow-bean-definition-overriding=true
 ```
-3. While first start flyway automatic create data schema according script in V1_Create_schema.sql
+3. While first start flyway create data schema according script in V1_Create_schema.sql
 
 
 *Written by @AlexeyBelyaev 
