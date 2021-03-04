@@ -9,11 +9,14 @@ import com.alexeybelyaev.receiptsharing.web.dto.ApplicationUserDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -25,6 +28,9 @@ public class ApplicationUserServiceImpl implements ApplicationUserService {
     private final ApplicationUserDao applicationUserDao;
 
     private final PasswordEncoder passwordEncoder;
+
+    @Autowired
+    MessageSource messageSource;
 
     @Autowired
     public ApplicationUserServiceImpl(@Qualifier("postgresUser") ApplicationUserDao applicationUserDao, PasswordEncoder passwordEncoder) {
@@ -52,18 +58,18 @@ public class ApplicationUserServiceImpl implements ApplicationUserService {
     @Override
     public ApplicationUser registerNewUser(ApplicationUserDto userDto) throws AppUserAlreadyExistException{
 
-        //Check if email unique
-        Optional<ApplicationUser> applicationUser = applicationUserDao.selectApplicationUserByEmail(userDto.getEmail());
-        if (applicationUser.isPresent()){
-            throw new AppUserAlreadyExistException(
-                    "User with email: "+userDto.getEmail()+" is already exist");
-        }
+        //Check if email or username exist
+        Optional<ApplicationUser> applicationUserByEmail = applicationUserDao.selectApplicationUserByEmail(userDto.getEmail());
 
-        //Check if username unique
-        applicationUser = applicationUserDao.selectApplicationUserByUserName(userDto.getUsername());
-        if (applicationUser.isPresent()){
+        Optional<ApplicationUser> applicationUserByUserName = applicationUserDao.selectApplicationUserByUserName(userDto.getUsername());
+        if (applicationUserByEmail.isPresent()||applicationUserByUserName.isPresent()){
             throw new AppUserAlreadyExistException(
-                    "User with name: "+userDto.getUsername()+" is already exist");
+                    messageSource.getMessage(
+                            "message.userExist",
+                            new Object[]{userDto.getEmail()},
+                            LocaleContextHolder.getLocale())
+            );
+
         }
 
         UUID uuid =UUID.randomUUID();

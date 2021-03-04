@@ -4,28 +4,31 @@
     position: relative;
     font-size: 62.5%;
     color: white;
+    max-width: 100%;
+    
     
 }
 
 .nav-tag{
-    width: 80%;
+    max-width: 100%;
     margin: auto;
     padding: 0.2rem 0rem;
     min-height: 10vh;
-    display:flex;
-    justify-content: space-between;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
     
-
     .nav-home{
         list-style: none;
-        flex: 2;
+        flex: 1;
         margin: 0;
+        align-items: center;
+        padding-left: 10%;
         .home-link {
             color: white;
             font-size: 2.6rem;
             font-family: 'Times New Roman', Times, serif;
-            padding: 1rem 2rem;
+            padding: 0rem 2rem;
         }
     }
 
@@ -35,7 +38,8 @@
         flex: 1;
         list-style: none;
         margin: 0;
-      
+        align-items: center;
+      padding-right: 10%;
         .nav-li{
             font-size: 2.6rem;
             a{
@@ -48,7 +52,7 @@
     .login {
        /* background: #f54538;*/
        background: none;
-        padding: 1rem 2rem;
+        padding: 0rem 1rem;
         border-radius: 0rem;
         color: white;
         font-size: 2.6rem;
@@ -56,7 +60,7 @@
     }
     .signin{
         background: none;
-        padding: 1rem 2rem;
+        padding: 0rem 1rem;
         border-radius: 0rem;
         color: white;
         font-size: 2.6rem;
@@ -68,6 +72,9 @@
         margin-left: 1rem;
         font-size: 2.6rem;
         font-family: 'Times New Roman', Times, serif;
+        overflow: hidden;
+        margin-right: 1rem;
+    
     }
 }
 

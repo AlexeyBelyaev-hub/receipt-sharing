@@ -67,27 +67,6 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
        .logoutSuccessUrl("/");
     }
 
-//    @Override
-//    @Bean
-//    protected UserDetailsService userDetailsService() {
-//        UserDetails adminUser = User.builder()
-//                .username("Alexey")
-//                .password(passwordEncoder.encode("a"))
-//                //.roles(ApplicationUserRole.ADMIN.name()) // ROLE_PERSON
-//                .authorities(ADMIN.grantedAuthoritySet()).build();
-//        UserDetails adminUserTrainee = User.builder()
-//                .username("Trainee")
-//                .password(passwordEncoder.encode("trainee"))
-//                //.roles(ApplicationUserRole.ADMIN_TRAINEE.name()) // ROLE_PERSON
-//                .authorities(ADMIN_TRAINEE.grantedAuthoritySet()).build();
-//        UserDetails user = User.builder()
-//                .username("User1")
-//                .password(passwordEncoder.encode("user1"))
-//                //.roles(ApplicationUserRole.USER.name()) // ROLE_PERSON
-//                .authorities(USER.grantedAuthoritySet()).build();
-//
-//        return new InMemoryUserDetailsManager(adminUser,user,adminUserTrainee);
-//    }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {

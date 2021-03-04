@@ -48,9 +48,11 @@
                 $("#locales").change(function () {
                     var selectedOption = $('#locales').val();
                     if (selectedOption != '') {
+                        var searchParams = new URLSearchParams(window.location.search);
+                        searchParams.set("lang",selectedOption);
                         window.location.replace
-                            (
-                                window.location.origin + window.location.pathname + '?lang=' + selectedOption
+                        (
+                            window.location.origin + window.location.pathname +'?' + searchParams.toString()
                             );
                     }
                 });

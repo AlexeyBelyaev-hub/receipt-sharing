@@ -14,11 +14,14 @@ import com.alexeybelyaev.receiptsharing.exceptions.AppUserNotFoundException;
 import com.alexeybelyaev.receiptsharing.web.dto.ApplicationUserDto;
 import com.alexeybelyaev.receiptsharing.model.Person;
 import com.alexeybelyaev.receiptsharing.service.PersonService;
+import com.alexeybelyaev.receiptsharing.web.dto.CaptchaResponseDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.json.GsonJsonParser;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
 import org.springframework.mail.MailAuthenticationException;
 import org.springframework.mail.SimpleMailMessage;
@@ -30,9 +33,11 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.support.RequestContextUtils;
 import org.thymeleaf.context.LazyContextVariable;
 
 import javax.servlet.ServletContext;
@@ -46,10 +51,18 @@ import java.util.*;
 @Controller
 @RequestMapping("/")
 public class TemplateController {
+    private static final String CAPTCHA_URL="https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s";
 
     private final PersonService personService;
     private final ApplicationUserService applicationUserService;
     private final ReceiptService receiptService;
+
+    @Value("${recaptcha.secret}")
+    private String secretKey;
+
+    @Autowired
+    private RestTemplate restTemplate;
+
 
     @Autowired
     ApplicationEventPublisher eventPublisher;
@@ -99,7 +112,17 @@ public class TemplateController {
     public String registerApplicationUser(
             @ModelAttribute("user") @Valid ApplicationUserDto applicationUserDto,
             BindingResult bindingResult, //must be right after validated object
-            HttpServletRequest request, Model model){
+            @RequestParam("g-recaptcha-response") String captchaResponse,
+            HttpServletRequest request, Model model, Locale locale){
+
+        String url = String.format(CAPTCHA_URL, secretKey,captchaResponse);
+        CaptchaResponseDto responseDto = restTemplate.postForObject(url, Collections.emptyList(), CaptchaResponseDto.class);
+
+        if (!responseDto.isSuccess()){
+            bindingResult.addError(new ObjectError("captchaError",
+                    messages.getMessage("message.fillCaptcha", null,
+                            locale)));
+        }
 
         if (bindingResult.hasErrors()){
             return "registration";
@@ -111,7 +134,9 @@ public class TemplateController {
              eventPublisher.publishEvent(new OnCompleteRegistrationEvent(registeredUser,
                      request.getLocale(), request.getContextPath()));
         }catch (AppUserAlreadyExistException exception){
-            bindingResult.addError(new ObjectError("UserExistError", exception.getMessage()));
+            bindingResult.addError(new ObjectError("UserExistError",
+                   exception.getMessage()));
+
             return "registration";
         } catch ( RuntimeException ex) {
             return "login?error="+ex.getMessage();

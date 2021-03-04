@@ -1,15 +1,15 @@
 // -- Initialize const and main items --
 
+// var recipetDto, currency must be initialized at receipt.html
 
 $(document).ready(function(){
-
+    
     if(receiptDto!=undefined){
         for(item of receiptDto.items){
             addItem(null,item);
         }
     }
     calculateTotal();
-    
 
 });
 
@@ -136,7 +136,7 @@ function getActivePersonId() {
 function refreshTotalForPerson(personLabel) {
     input = personLabel.children[0];
     var total = getTotalForPerson(input.id);
-    var totalText = (total > 0) ? " - " + total + " y.e." : "";
+    var totalText = (total > 0) ? " - " + total + " "+currency : "";
     personLabel.innerText = input.name + totalText;
     personLabel.appendChild(input);
 }
@@ -179,7 +179,6 @@ function sumOnChange() {
 
     calculateTotal();
 }
-
 
 
 function addItem(event,itemDto) {
@@ -317,7 +316,7 @@ function calculateTotal() {
     for (element of sumArray) {
         total += Number(element.value);
     }
-    totalHeader.innerText = total + " y.e.";
+    totalHeader.innerText = total + " "+currency;
 }
 
 function refreshAllTotals() {

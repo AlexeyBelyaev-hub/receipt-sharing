@@ -33,6 +33,18 @@ public class ResponseExceptionHandler  {
         return  new ResponseEntity<>(response, notFound);
     }
 
+    @ExceptionHandler(value = {AppUserAlreadyExistException.class})
+    public ResponseEntity<Object> handleAppUserAlreadyExistException(AppUserNotFoundException exception){
+        HttpStatus internalServerError = HttpStatus.INTERNAL_SERVER_ERROR;
+        log.error(internalServerError.toString(),exception);
+        GeneralResponse response = new GeneralResponse(exception.getMessage(),
+                internalServerError,
+                ZonedDateTime.now(ZoneId.of("Z"))
+        );
+
+        return  new ResponseEntity<>(response, internalServerError);
+    }
+
     @ExceptionHandler(value = {AppUserUpdateException.class})
     public ResponseEntity<Object> handleAppUserUpdateException(AppUserUpdateException exception){
         HttpStatus internalError = HttpStatus.INTERNAL_SERVER_ERROR;

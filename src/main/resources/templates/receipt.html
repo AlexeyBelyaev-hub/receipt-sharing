@@ -23,7 +23,7 @@
 
             <div class="container-fluid">
                 <div id="main" class="card card-body">
-                    <h3 class="title">1. Choose the person</h3>
+                    <h3 class="title" th:text="#{receipt.titleChoosePerson}">1. Choose the person</h3>
 
                     <div class="row">
                         <div class="col-sm">
@@ -52,20 +52,20 @@
                         </div>
                     </div>
 
-                    <h3 class="title">2. Check the receipt and select items</h3>
+                    <h3 class="title" th:text="#{receipt.titleSelectItems}">2. Check the receipt and select items</h3>
                     <ul id="items" class="list-group">
                         <li class="list-group-item">
                             <div class="item-title">
-                                <h3>Title</h3>
+                                <h3 th:text="#{receipt.itemTitle}" >Title</h3>
                             </div>
                             <div class="price-title">
-                                <h3>Price</h3>
+                                <h3 th:text="#{receipt.priceTitle}" >Price</h3>
                             </div>
                             <div class="quantity-title">
-                                <h3>Quantity</h3>
+                                <h3 th:text="#{receipt.quantityTitle}">Quantity</h3>
                             </div>
                             <div class="sum-title">
-                                <h3>Sum</h3>
+                                <h3 th:text="#{receipt.sumTitle}">Sum</h3>
                             </div>
                         </li>
                         <!--For design purposes
@@ -75,9 +75,9 @@
                             <input type="number" class="quantity" placeholder="Quantity" /></input>
                             <input type="number" class="sum" placeholder="Sum" /></input>
 
-                            <div class="btn-group mt-2 float-right">
-                                <button class="btn btn-lg btn-dark btn minus">-</button>
-                                <button class="btn btn-lg btn-dark btn plus">+</button>
+                            <div class="btn-group mt-2 float-right font-weight-bold">
+                                <button class="btn btn-lg font-weight-bold btn-secondary btn minus">-</button>
+                                <button class="btn btn-lg btn-dark btn plus font-weight-bold">+</button>
                                 <button class="btn btn-lg btn-danger btn delete">X</button>
                             </div>
 
@@ -92,16 +92,18 @@
                             <input type="number" class="price" placeholder="Price" /></input>
                             <input type="number" class="quantity" placeholder="Quantity" /></input>
                             <input type="number" class="sum" placeholder="Sum" /></input>
-                            <div class="btn-group mt-2 float-right">
+                            <div class="btn-group-block mt-2 float-right">
+                                <button class="btn btn-lg btn-danger float-right btn delete">X</button>
                                 <button class="btn btn-lg btn-dark btn minus">-</button>
-                                <button class="btn btn-lg btn-dark btn plus">+</button>
-                                <button class="btn btn-lg btn-danger btn delete">X</button>
+                                <button class="btn btn-lg btn-dark btn plus">+</button>  
                             </div>
-
-                            <input class="btn btn-lg font-weight-bold btn-outline-primary countForPerson" name="person1" />
-                            <input class="btn btn-lg font-weight-bold btn-outline-secondary countForPerson" name="person2"/>
-                            <input class="btn btn-lg font-weight-bold btn-outline-success countForPerson" name="person3"/>    
-                         -->
+                            <div >
+                                <input class="btn btn-lg font-weight-bold btn-outline-primary countForPerson" name="person1" />
+                                <input class="btn btn-lg font-weight-bold btn-outline-secondary countForPerson" name="person2"/>
+                                <input class="btn btn-lg font-weight-bold btn-outline-success countForPerson" name="person3"/>    
+                             
+                            </div>
+                          -->
                         </li>
                         <li id="li-add-button" class="list-group-item">
                             <button id="add-new-item" class="btn btn-light  w-100 p-1 font-weight-bold"
@@ -110,8 +112,8 @@
 
                         <li class="list-group-item">
                             <div class="total-title">
-                                <h3 class="mr-3">Total:</h3>
-                                <h3 id="total" text="100"></h3>
+                                <h3 class="mr-3" th:text="#{receipt.totalTitle}" >Total:</h3>
+                                <h3 id="total" ></h3>
 
                             </div>
                         </li>
@@ -136,6 +138,7 @@
     /*<![CDATA[*/
         var serverContext = /*[[@{/}]]*/ "http://localhost:8080/";
         var receiptDto = /*[[${receipt}]]*/undefined;
+        var currency = /*[[#{lang.currency}]]*/undefined;
     /*]]>*/
 
     </script>

@@ -1,19 +1,39 @@
 .item{
     width: 40%; 
+    border-top: none;
+                border-left: none;
+                border-right: none;
+                outline-width: thin;
+                outline-color: lightgray;
 }
 
 .price{
     width: 15%;
+    border-top: none;
+                border-left: none;
+                border-right: none;
+                outline-width: thin;
+                outline-color: lightgray;
 
 }
 
 .quantity{
     width: 10%;
+    border-top: none;
+                border-left: none;
+                border-right: none;
+                outline-width: thin;
+                outline-color: lightgray;
   
 }
 
 .sum{
-    width: 15%
+    width: 15%;
+    border-top: none;
+                border-left: none;
+                border-right: none;
+                outline-width: thin;
+                outline-color: lightgray;
 }
 
 .countForPerson{
@@ -86,3 +106,22 @@ li.finished{
 
 
   
+@media screen and (max-width: 400px){
+    .item{
+        width: 40%; 
+    }
+    
+    .price{
+        width: 15%;
+    
+    }
+    
+    .quantity{
+        width: 15%;
+      
+    }
+    
+    .sum{
+        width: 25%
+    }
+}

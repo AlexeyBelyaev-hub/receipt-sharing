@@ -60,7 +60,7 @@ input {
 }
 
 .background-section {
-  background-image: url(/imgs/background-img.jpg);
+  background: url(/imgs/background-img.jpg) no-repeat;
   /*Make the section down the bottom of the page*/
   height: 100vh;
   background-size: cover;
@@ -105,7 +105,7 @@ input {
   position: absolute;
   background: white;
   padding: 5rem 5rem;
-  margin-top: 5%;
+  margin-top: 3%;
   min-width: -webkit-min-content;
   min-width: -moz-min-content;
   min-width: min-content;
@@ -226,19 +226,19 @@ h1 {
   position: relative;
   font-size: 62.5%;
   color: white;
+  max-width: 100%;
 }
 
 .nav-tag {
-  width: 80%;
+  max-width: 100%;
   margin: auto;
   padding: 0.2rem 0rem;
   min-height: 10vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -246,17 +246,21 @@ h1 {
 
 .nav-tag .nav-home {
   list-style: none;
-  -webkit-box-flex: 2;
-      -ms-flex: 2;
-          flex: 2;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
   margin: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 10%;
 }
 
 .nav-tag .nav-home .home-link {
   color: white;
   font-size: 2.6rem;
   font-family: 'Times New Roman', Times, serif;
-  padding: 1rem 2rem;
+  padding: 0rem 2rem;
 }
 
 .nav-tag .nav-ul {
@@ -271,6 +275,10 @@ h1 {
           flex: 1;
   list-style: none;
   margin: 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-right: 10%;
 }
 
 .nav-tag .nav-ul .nav-li {
@@ -285,7 +293,7 @@ h1 {
 .nav-tag .login {
   /* background: #f54538;*/
   background: none;
-  padding: 1rem 2rem;
+  padding: 0rem 1rem;
   border-radius: 0rem;
   color: white;
   font-size: 2.6rem;
@@ -294,7 +302,7 @@ h1 {
 
 .nav-tag .signin {
   background: none;
-  padding: 1rem 2rem;
+  padding: 0rem 1rem;
   border-radius: 0rem;
   color: white;
   font-size: 2.6rem;
@@ -305,22 +313,44 @@ h1 {
   margin-left: 1rem;
   font-size: 2.6rem;
   font-family: 'Times New Roman', Times, serif;
+  overflow: hidden;
+  margin-right: 1rem;
 }
 
 .item {
   width: 40%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline-width: thin;
+  outline-color: lightgray;
 }
 
 .price {
   width: 15%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline-width: thin;
+  outline-color: lightgray;
 }
 
 .quantity {
   width: 10%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline-width: thin;
+  outline-color: lightgray;
 }
 
 .sum {
   width: 15%;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline-width: thin;
+  outline-color: lightgray;
 }
 
 .countForPerson {
@@ -405,6 +435,21 @@ li.finished {
   background-color: #e4f5e3;
 }
 
+@media screen and (max-width: 400px) {
+  .item {
+    width: 40%;
+  }
+  .price {
+    width: 15%;
+  }
+  .quantity {
+    width: 15%;
+  }
+  .sum {
+    width: 25%;
+  }
+}
+
 @media screen and (max-width: 1300px) {
   html {
     font-size: 50%;
@@ -413,7 +458,7 @@ li.finished {
 
 @media screen and (max-width: 700px) {
   html {
-    font-size: 40%;
+    font-size: 50%;
   }
   .nav-tag .nav-home {
     -webkit-box-flex: 1;
@@ -427,6 +472,47 @@ li.finished {
   }
   .showcase-reg {
     margin-top: 10vh;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 40%;
+  }
+  .nav-tag .nav-home {
+    padding-left: 0;
+    -webkit-box-flex: 1;
+        -ms-flex: 1;
+            flex: 1;
+  }
+  .nav-tag .nav-ul {
+    -webkit-box-flex: 2;
+        -ms-flex: 2;
+            flex: 2;
+    padding-right: 0;
+  }
+  .showcase-reg {
+    position: absolute;
+    background: white;
+    padding: 1rem 1rem;
+    margin-top: 3vh;
+    min-width: -webkit-min-content;
+    min-width: -moz-min-content;
+    min-width: min-content;
+    max-width: 90%;
+    margin-left: 0;
+    margin-bottom: 3vh;
+  }
+  .minus {
+    width: 6rem !important;
+    font-size: x-small !important;
+  }
+  .plus {
+    width: 6rem !important;
+    font-size: x-small !important;
+  }
+  .delete {
+    width: 6rem !important;
   }
 }
 /*# sourceMappingURL=style.css.map */
