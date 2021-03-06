@@ -15,6 +15,7 @@ import com.alexeybelyaev.receiptsharing.web.dto.ApplicationUserDto;
 import com.alexeybelyaev.receiptsharing.model.Person;
 import com.alexeybelyaev.receiptsharing.service.PersonService;
 import com.alexeybelyaev.receiptsharing.web.dto.CaptchaResponseDto;
+import com.alexeybelyaev.receiptsharing.web.dto.ReceiptDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -226,6 +227,7 @@ public class TemplateController {
     }
 
 
+    //  -- RECEIPT CONTROLLER --
     @GetMapping("receipt")
     public String getReceiptView(HttpServletRequest request, Model model,
                                  @RequestParam(value = "trybeta", required = false) Boolean trybeta ) {
@@ -240,5 +242,13 @@ public class TemplateController {
         }
 
         return "receipt.html";
+    }
+
+
+    @PostMapping("saveReceipt")
+    public String saveReceipt(@ModelAttribute("receipt") @Valid ReceiptDto receiptDto){
+
+
+
     }
 }
