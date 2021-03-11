@@ -1,30 +1,25 @@
 package com.alexeybelyaev.receiptsharing.auth;
 
+import com.alexeybelyaev.receiptsharing.model.ApplicationUser;
 import com.alexeybelyaev.receiptsharing.validation.VerificationToken;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.time.temporal.TemporalAdjusters;
 import java.util.*;
-
-import static com.alexeybelyaev.receiptsharing.security.ApplicationUserRole.*;
 
 @Slf4j
 @Repository("postgresUser")
 public class ApplicationUserDaoImpl implements ApplicationUserDao {
 
-    private NamedParameterJdbcTemplate namedParamJdbcTemplate;
+    private final NamedParameterJdbcTemplate namedParamJdbcTemplate;
 
     private final PasswordEncoder passwordEncoder;
 

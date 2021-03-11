@@ -1,8 +1,8 @@
 package com.alexeybelyaev.receiptsharing.service;
 
-import com.alexeybelyaev.receiptsharing.auth.ApplicationUser;
-import com.alexeybelyaev.receiptsharing.auth.ApplicationUserDao;
 import com.alexeybelyaev.receiptsharing.auth.ApplicationUserService;
+import com.alexeybelyaev.receiptsharing.model.ApplicationUser;
+import com.alexeybelyaev.receiptsharing.auth.ApplicationUserDao;
 import com.alexeybelyaev.receiptsharing.security.ApplicationUserRole;
 import com.alexeybelyaev.receiptsharing.validation.VerificationToken;
 import org.junit.Assert;

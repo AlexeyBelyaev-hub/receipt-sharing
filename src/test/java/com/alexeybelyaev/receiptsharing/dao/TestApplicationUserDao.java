@@ -1,7 +1,7 @@
 package com.alexeybelyaev.receiptsharing.dao;
 
-import com.alexeybelyaev.receiptsharing.auth.ApplicationUser;
 import com.alexeybelyaev.receiptsharing.auth.ApplicationUserDao;
+import com.alexeybelyaev.receiptsharing.model.ApplicationUser;
 import com.alexeybelyaev.receiptsharing.security.ApplicationUserRole;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;

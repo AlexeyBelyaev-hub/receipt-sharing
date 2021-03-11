@@ -1,4 +1,4 @@
-package com.alexeybelyaev.receiptsharing.auth;
+package com.alexeybelyaev.receiptsharing.model;
 
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;

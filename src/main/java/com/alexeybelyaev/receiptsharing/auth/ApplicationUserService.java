@@ -1,6 +1,7 @@
 package com.alexeybelyaev.receiptsharing.auth;
 
 import com.alexeybelyaev.receiptsharing.exceptions.AppUserAlreadyExistException;
+import com.alexeybelyaev.receiptsharing.model.ApplicationUser;
 import com.alexeybelyaev.receiptsharing.validation.VerificationToken;
 import com.alexeybelyaev.receiptsharing.web.dto.ApplicationUserDto;
 import org.springframework.security.core.userdetails.UserDetails;

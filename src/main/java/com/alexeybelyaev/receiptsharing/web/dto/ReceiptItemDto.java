@@ -1,5 +1,8 @@
 package com.alexeybelyaev.receiptsharing.web.dto;
 
+import lombok.Data;
+
+@Data
 public class ReceiptItemDto {
     private int rowNumber;
     private String title;

@@ -1,6 +1,7 @@
 package com.alexeybelyaev.receiptsharing.auth;
 
 
+import com.alexeybelyaev.receiptsharing.model.ApplicationUser;
 import com.alexeybelyaev.receiptsharing.security.ApplicationUserRole;
 import com.alexeybelyaev.receiptsharing.exceptions.AppUserAlreadyExistException;
 import com.alexeybelyaev.receiptsharing.validation.VerificationToken;
@@ -16,7 +17,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
 import java.time.LocalDateTime;
 import java.util.*;
@@ -84,6 +84,7 @@ public class ApplicationUserServiceImpl implements ApplicationUserService {
         return appUserToRegister;
 
     }
+
 
     // expiry time = 60*24 minutes
     @Override

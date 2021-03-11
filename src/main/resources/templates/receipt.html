@@ -23,6 +23,7 @@
 
             <div class="container-fluid">
                 <div id="main" class="card card-body">
+                    <form>
                     <h3 class="title" th:text="#{receipt.titleChoosePerson}">1. Choose the person</h3>
 
                     <div class="row">
@@ -68,9 +69,9 @@
                                 <h3 th:text="#{receipt.sumTitle}">Sum</h3>
                             </div>
                         </li>
-                        <!--For design purposes
+                        <!--For design purposes  -->
                         <li class="list-group-item">
-                            <input type="text" class="item" placeholder="Item" /></input>
+                            <input type="text" name="item" class="item" placeholder="Item" /></input>
                             <input type="number" class="price" placeholder="Price" /></input>
                             <input type="number" class="quantity" placeholder="Quantity" /></input>
                             <input type="number" class="sum" placeholder="Sum" /></input>
@@ -88,7 +89,7 @@
 
                         </li>
                         <li class="list-group-item">
-                            <input type="text" class="item" placeholder="Item" /></input>
+                            <input type="text" name="item" class="item" placeholder="Item" /></input>
                             <input type="number" class="price" placeholder="Price" /></input>
                             <input type="number" class="quantity" placeholder="Quantity" /></input>
                             <input type="number" class="sum" placeholder="Sum" /></input>
@@ -103,7 +104,7 @@
                                 <input class="btn btn-lg font-weight-bold btn-outline-success countForPerson" name="person3"/>    
                              
                             </div>
-                          -->
+                        
                         </li>
                         <li id="li-add-button" class="list-group-item">
                             <button id="add-new-item" class="btn btn-light  w-100 p-1 font-weight-bold"
@@ -118,6 +119,9 @@
                             </div>
                         </li>
                     </ul>
+                </form>
+                    <button onclick="saveReceipt()">Save</button>
+
                 </div>
             </div>
 
@@ -133,6 +137,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
     <script type="text/javascript" th:inline="javascript">
     /*<![CDATA[*/

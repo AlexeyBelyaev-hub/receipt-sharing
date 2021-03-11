@@ -1,6 +1,6 @@
 package com.alexeybelyaev.receiptsharing.events;
 
-import com.alexeybelyaev.receiptsharing.auth.ApplicationUser;
+import com.alexeybelyaev.receiptsharing.model.ApplicationUser;
 import com.alexeybelyaev.receiptsharing.auth.ApplicationUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,11 +1,9 @@
 package com.alexeybelyaev.receiptsharing.validation;
 
-import com.alexeybelyaev.receiptsharing.auth.ApplicationUser;
+import com.alexeybelyaev.receiptsharing.model.ApplicationUser;
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Data
 public class VerificationToken {

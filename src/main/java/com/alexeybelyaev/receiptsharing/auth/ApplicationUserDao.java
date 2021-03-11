@@ -1,5 +1,6 @@
 package com.alexeybelyaev.receiptsharing.auth;
 
+import com.alexeybelyaev.receiptsharing.model.ApplicationUser;
 import com.alexeybelyaev.receiptsharing.validation.VerificationToken;
 
 import java.util.List;
@@ -28,9 +29,6 @@ public interface ApplicationUserDao {
 
      int deleteApplicationUser(UUID uid);
 
-//     int addContact(UUID user_uid, UUID user_uid);
-
-//     List<ApplicationUser> getAllContactsByUserID(UUID user_uuid);
      int saveVerificationToken(VerificationToken verificationToken);
 
      Optional<VerificationToken> getVerificationToken(UUID token);

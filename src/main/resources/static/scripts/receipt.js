@@ -345,4 +345,29 @@ function isRowFinished(liNode) {
     return (totalCount == quantityInput.value) ? true : false;
 }
 
+function saveReceipt(){
+     
+    var objectToSend = [{"rowNumber":1, "title":"Amstel","price":1.5,"quantity":2, "sum":3},
+    {"rowNumber":2, "title":"Chicken","price":2,"quantity":2, "sum":4}]; 
 
+    var receiptToSave = {"receiptNumber":123, "company":"Bar", "items":objectToSend}
+    //var objectToSend = {"rowNumber":1, "title":"Amstel","price":1.5,"quantity":2, "sum":3};
+    //var form = $('input');
+    //var data = form.serialize();
+    // $.post("http://localhost:8080/save",objectToSend, function(data){
+    //     alert(data);
+    // });
+
+    var items =JSON.stringify(receiptToSave); 
+    $.ajax({
+        url:'http://localhost:8080/user/save',
+        method: 'POST',
+        dataType: 'application/json',
+        contentType: 'application/json',
+        data:items,
+        success:function(data){
+            alert (data.message);
+        }
+    });
+    
+}

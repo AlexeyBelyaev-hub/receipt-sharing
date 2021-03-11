@@ -1,7 +1,6 @@
 package com.alexeybelyaev.receiptsharing.events;
 
-import com.alexeybelyaev.receiptsharing.auth.ApplicationUser;
-import lombok.Data;
+import com.alexeybelyaev.receiptsharing.model.ApplicationUser;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.context.ApplicationEvent;

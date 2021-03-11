@@ -1,29 +1,5 @@
 package com.alexeybelyaev.receiptsharing.dao;
 
-import com.alexeybelyaev.receiptsharing.auth.ApplicationUser;
-import com.alexeybelyaev.receiptsharing.auth.ApplicationUserDao;
-import com.alexeybelyaev.receiptsharing.dao.PersonDao;
-import com.alexeybelyaev.receiptsharing.model.Person;
-
-import com.alexeybelyaev.receiptsharing.security.ApplicationUserRole;
-import org.junit.Assert;
-import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
 //@SpringBootTest
 public class TestPersonDao {
 //

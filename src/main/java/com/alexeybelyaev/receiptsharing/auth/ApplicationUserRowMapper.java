@@ -1,6 +1,6 @@
 package com.alexeybelyaev.receiptsharing.auth;
 
-import com.alexeybelyaev.receiptsharing.security.ApplicationUserPermission;
+import com.alexeybelyaev.receiptsharing.model.ApplicationUser;
 import com.alexeybelyaev.receiptsharing.security.ApplicationUserRole;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.security.core.GrantedAuthority;
@@ -8,11 +8,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-import java.util.stream.Collectors;
 
 public class ApplicationUserRowMapper implements RowMapper<ApplicationUser> {
 

@@ -1,13 +1,12 @@
 package com.alexeybelyaev.receiptsharing.web.controller;
 
-import com.alexeybelyaev.receiptsharing.auth.ApplicationUser;
+import com.alexeybelyaev.receiptsharing.model.ApplicationUser;
 import com.alexeybelyaev.receiptsharing.auth.ApplicationUserService;
 import com.alexeybelyaev.receiptsharing.auth.ApplicationUserServiceImpl;
 import com.alexeybelyaev.receiptsharing.events.OnCompleteRegistrationEvent;
 import com.alexeybelyaev.receiptsharing.exceptions.AppUserAlreadyExistException;
 import com.alexeybelyaev.receiptsharing.exceptions.AppUserUpdateException;
 import com.alexeybelyaev.receiptsharing.exceptions.GeneralResponse;
-import com.alexeybelyaev.receiptsharing.model.Receipt;
 import com.alexeybelyaev.receiptsharing.service.ReceiptService;
 import com.alexeybelyaev.receiptsharing.validation.VerificationToken;
 import com.alexeybelyaev.receiptsharing.exceptions.AppUserNotFoundException;
@@ -15,20 +14,14 @@ import com.alexeybelyaev.receiptsharing.web.dto.ApplicationUserDto;
 import com.alexeybelyaev.receiptsharing.model.Person;
 import com.alexeybelyaev.receiptsharing.service.PersonService;
 import com.alexeybelyaev.receiptsharing.web.dto.CaptchaResponseDto;
-import com.alexeybelyaev.receiptsharing.web.dto.ReceiptDto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.json.GsonJsonParser;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
-import org.springframework.mail.MailAuthenticationException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -36,12 +29,9 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.context.request.WebRequest;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.springframework.web.servlet.support.RequestContextUtils;
 import org.thymeleaf.context.LazyContextVariable;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.time.ZoneId;
@@ -51,12 +41,12 @@ import java.util.*;
 @Slf4j
 @Controller
 @RequestMapping("/")
-public class TemplateController {
+public class RegistrationController {
     private static final String CAPTCHA_URL="https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s";
 
     private final PersonService personService;
     private final ApplicationUserService applicationUserService;
-    private final ReceiptService receiptService;
+
 
     @Value("${recaptcha.secret}")
     private String secretKey;
@@ -75,12 +65,11 @@ public class TemplateController {
     JavaMailSender mailSender;
 
     @Autowired
-    public TemplateController(PersonService personService,
-                              ApplicationUserServiceImpl applicationUserService,
-                              ReceiptService receiptService) {
+    public RegistrationController(PersonService personService,
+                                  ApplicationUserServiceImpl applicationUserService,
+                                  ReceiptService receiptService) {
         this.personService = personService;
         this.applicationUserService = applicationUserService;
-        this.receiptService = receiptService;
     }
 
     @GetMapping("login")
@@ -227,28 +216,4 @@ public class TemplateController {
     }
 
 
-    //  -- RECEIPT CONTROLLER --
-    @GetMapping("receipt")
-    public String getReceiptView(HttpServletRequest request, Model model,
-                                 @RequestParam(value = "trybeta", required = false) Boolean trybeta ) {
-
-        if (trybeta!=null && trybeta==true){
-            model.addAttribute("receipt", new LazyContextVariable<Receipt>() {
-                @Override
-                protected Receipt loadValue() {
-                    return receiptService.getTestReceipt();
-                }
-            });
-        }
-
-        return "receipt.html";
-    }
-
-
-    @PostMapping("saveReceipt")
-    public String saveReceipt(@ModelAttribute("receipt") @Valid ReceiptDto receiptDto){
-
-
-
-    }
 }
